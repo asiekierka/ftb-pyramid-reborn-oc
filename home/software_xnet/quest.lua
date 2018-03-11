@@ -96,7 +96,7 @@ function m_req(item, i, req, outId)
       end
     end end
     if matchSize < (req.count*2) then
-      xnet.transferItem(inpos,i,item.size,cpos[outId])
+      xnet.transferItem(inpos,i,1,cpos[outId])
     end
   end
 end
