@@ -59,7 +59,7 @@ event.listen("modem_message", function(event, localAddress, remoteAddress, port,
         for i=1,16 do
           if questComp[tn][i] == true then count = count + 1 end
        end
-        gpu.set(teamO[1] + 1 + (#teamName[tn]), teamO[2] - 1, "(".. math.floor(count*100/16.0) .. "%)")
+        gpu.set(teamO[1] + 1 + (#teamName[tn]), teamO[2] - 1, "(".. math.floor(count*100/16.0) .. "%)   ")
         gpu.setBackground(color)
         gpu.set(teamO[1]+math.floor(questV%8)*2,teamO[2]+math.floor(questV/8), "  ")
       end
