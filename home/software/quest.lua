@@ -69,7 +69,7 @@ local reqTitle = reqData.title
 local reqs = reqData.reqs
 
 local function centerPos(x, w)
-  return (w - x) / 2
+  return (w + 1 - x) / 2
 end
 
 local itemSlots = {}
@@ -175,22 +175,20 @@ local y = 2
 local w = 30
 local h = 15
 
--- local scrW, scrH = gpu.getResolution()
-local xOff = x
-local yOff = y
-local scrW = xOff * 2 + w * reqX
-local scrH = yOff * 2 + h * reqY - 2
+local scrW = x * 2 + w * reqX - 2
+local scrH = y * 2 + h * reqY - 2
 
 if reqTitle ~= nil then
   x = x + 2
-  xOff = xOff + 2
   y = y + 2
-  yOff = yOff + 2
   scrW = scrW + 4
   scrH = scrH + 2
 end
 
-gpu.setResolution(scrW-1, scrH-1) -- minus one? TODO: figure out why
+local xOff = x
+local yOff = y
+
+gpu.setResolution(scrW, scrH)
 gpu.setBackground(bgColor)
 gpu.fill(1, 1, scrW, scrH, " ")
 
