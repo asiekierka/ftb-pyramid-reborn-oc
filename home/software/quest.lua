@@ -21,7 +21,7 @@ local stepchars = {}
 for i=1,8 do
   stepchars[i] = unicode.char(0x2580 + i)
 end
-local bgColor = 0x333333
+local bgColor = 0x000000
 local transpIconColor = 0x888888 -- 8B
 
 function drawPNG(png, xp, yp)
@@ -42,7 +42,7 @@ function drawFluid(req, xp, yp)
   local levelI, levelF = math.modf(level)
   local levelFC = math.floor(levelF * 8)
   local brY = 8 - levelI
-  gpu.setBackground(0x333333)
+  gpu.setBackground(bgColor)
   gpu.setForeground(req.color)
   gpu.fill(xp, yp, 16, 8, " ")
   if brY < 8 then
@@ -190,7 +190,7 @@ if reqTitle ~= nil then
   scrH = scrH + 2
 end
 
-gpu.setResolution(scrW, scrH)
+gpu.setResolution(scrW-1, scrH-1) -- minus one? TODO: figure out why
 gpu.setBackground(bgColor)
 gpu.fill(1, 1, scrW, scrH, " ")
 
